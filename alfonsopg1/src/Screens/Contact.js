@@ -4,7 +4,7 @@ import './Contact.Module.css'
 const Contact = () => {
   return (
     <div >
-      Contacto
+     <p>Contacto</p>
     </div>
   )
 }

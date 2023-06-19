@@ -1,10 +1,19 @@
-.navBar{
+
+/* MobilVersion */
+.navBar,
+.topBarDesktop{
+    height: 10rem;
     display: flex;
     justify-content: space-around;
     padding: 0;
     align-items: center;
     background: rgb(144,205,202);
     background: linear-gradient(132deg, rgba(144,205,202,0.39959733893557425) 0%, rgba(252,255,255,0.8253676470588236) 85%);
+}
+.imgLogo:hover{
+  transform: scale(1.2);
+  transition: 1s;
+  cursor: pointer;
 }
 
 .navBarOpen{
@@ -18,27 +27,51 @@
     background: linear-gradient(132deg, rgba(76,184,179,1) 0%, rgba(252,255,255,0.08587184873949583) 85%);
     
 }
-/* .border {
-  display: flex;
-  height: 1px;
-  animation-name: animacionborder;
-  animation-duration: 1s;
-  background-color: rgb(57, 145, 115);
-}
-
-@keyframes animacionborder {
-    0% {
-      height: 0px;
-    }
-    100% {
-      height: 1px;
-    }
-  } */
 .navBarLink{
     display: flex;
-    font-size: 3rem;
+    justify-content: center;
+    padding: 1rem;
+    font-size: 2rem;
     font-weight: 400;
-    margin-top: 10rem;  
+    outline: 2px solid transparent;
+    transition: outline 0.3s ease;   
    
 }
+.navBarLink:hover{
+  outline: 2px solid #161414;
+  cursor: pointer;
+  transform: scale(1.2);
+  transition: 1s;
+}
+@media(max-width: 768px){
+.navBarLink{
+  margin-top: 10rem;  
+}
 
+}
+.closeButton{
+  margin-left: 5rem;
+}
+/* Desktop Version */
+/* .topBarDesktop{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+} */
+.navBarDesktop{
+  display: flex;
+  gap: 10rem;   
+}
+.navOnScroll{
+  position: fixed;
+  width: 100%;
+  height: 10rem;
+  display: flex;
+  justify-content: space-around;
+  padding: 0;
+  align-items: center;
+  background: rgb(144,205,202);
+  background: linear-gradient(132deg, rgba(144,205,202,0.39959733893557425) 0%, rgba(252,255,255,0.8253676470588236) 85%);
+  box-shadow: 2px 2px 5px;
+}

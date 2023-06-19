@@ -1,58 +1,132 @@
-import React, { useState } from 'react';
-import { Link } from 'react-scroll';
+// import { Link } from 'react-scroll';
+// import { Link } from "react-router-dom";
 import './NavBar.Modules.css';
-import logo from '../img/logo1.webp';
+import logo1 from '../img/logo1.webp';
+import logo2 from '../img/logo3.png';
 import {AiOutlineMenu, AiFillCloseSquare} from 'react-icons/ai'
+import { useScrollPosition } from './Hooks/ScrollPosition';
+import React, { useEffect, useState } from 'react';
 
 export const NavBar = () => {
-    // Me quede pendiente el mobile mediaqueries
     const [isMobile, setIsMobile] = useState(false);
     const [navBarOpen, setNavBarOpen] = useState(false);
+    const [imgLogo, setImgLogo] = useState(logo1)
      
    const showMenu = ()=>{
-    setNavBarOpen(!navBarOpen)
+    setNavBarOpen(!navBarOpen);
    }
+   useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth <= 768) {
+        setIsMobile(true);
+      } else {
+        setIsMobile(false);
+        setNavBarOpen(false);
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+    handleResize();
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+useEffect(() => {
+    const handleLogoHover = () => {
+      setImgLogo(logo2);
+    };
+
+    const handleLogoLeave = () => {
+      setImgLogo(logo1);
+    };
+
+    const logoElement = document.querySelector('.imgLogo');
+    logoElement.addEventListener('mouseenter', handleLogoHover);
+    logoElement.addEventListener('mouseleave', handleLogoLeave);
+
+    return () => {
+      logoElement.removeEventListener('mouseenter', handleLogoHover);
+      logoElement.removeEventListener('mouseleave', handleLogoLeave);
+    };
+  }, []);
     const Links = [
         {
             id: 1,
-            link: 'Home'
+            link: 'Inicio',
+            name: 'Inicio'
         },
         {
             id: 2,
-            link: 'Servicios'
+            link: 'Servicios',
+            name: 'Servicios'
+
         },
         {
             id: 3,
-            link: 'Porqué Nosotros'
+            link: 'Porqué nosotros',
+            name: 'Porqué Nosotros'
+
         },
         {
             id: 4,
-            link: 'Quienes Somos'
+            link: 'Quiénes somos',
+            name: 'Quienes Somos'
+
         },
         
     ]
+   
+     const scrollPosition = useScrollPosition()
   return (
-    <div className={navBarOpen === false? 'navBar' : 'navBarOpen'}>
-        {!navBarOpen && <img src={logo} alt='img/logo' className='imgLogo' width={150} height={150}/>}        
+    <>
+     {isMobile ? (
+        <div className={ navBarOpen
+          ? 'navBarOpen'
+          : scrollPosition > 0
+          ? 'navOnScroll'
+          : 'navBar'}>        
+        {!navBarOpen && <img src={logo1} alt='img/logo' className='imgLogo' width={150} height={150}/>}        
         {!navBarOpen ? <AiOutlineMenu size={30} className='menuMenu' onClick={showMenu}/> : <AiFillCloseSquare size={30} className= 'closeButton' onClick={showMenu}/>}       
         {
-            navBarOpen && 
+            navBarOpen &&
             <ul>
-            {Links.map((link)=>{
+              {Links.map((link)=>{
                 return (
-                    <div>
-                        <Link
-                        onClick={()=> setNavBarOpen(false)}
-                        to={link.link}
-                        smooth
-                        duration={500}
+                    
+                        <li key={link.id}
+                        // onClick={()=> setNavBarOpen(false)}
                         className='navBarLink'>
-                            {link.link === 'Porqué Nosotros' ? 'Porqué Nosotros' : link.link}</Link>
-                    </div>
+                            {link.link}
+                            </li>
+                        
+                   
                 )
-            })}
+            })}            
            </ul>
         }
-    </div>
+    </div> 
+        ) : (
+            <div className={scrollPosition > 0 ? 'navOnScroll' : 'navBar'}>
+             <img src={imgLogo} alt='img/logo' className='imgLogo' width={150} height={150}/>   
+            <ul className='navBarDesktop'>
+            {Links.map((link)=>{
+                return (
+                  
+                       
+                        <li key={link.id}
+                        // onClick={()=> setNavBarOpen(false)}
+                        className='navBarLink'>
+                            {link.link}
+                            </li>                        
+                   
+                )
+            })}
+           </ul> 
+           </div> 
+        )}
+    </>
+   
+    
   )
 }
