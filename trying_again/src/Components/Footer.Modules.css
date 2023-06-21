@@ -1,0 +1,13 @@
+.footer{
+    text-align: center;
+    padding: 1rem;
+    background: rgb(144,205,202);
+    background: linear-gradient(132deg, rgba(144,205,202,0.39959733893557425) 0%, rgba(252,255,255,0.8253676470588236) 85%);
+    color: #0b4f6c;
+}
+.contactFooter{
+    margin: 0;
+}
+.textCopy{
+    font-size: 1.5rem;
+}
