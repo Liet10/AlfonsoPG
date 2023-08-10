@@ -4,13 +4,13 @@ import './NavBar.Modules.css';
 import logo from '../Assets/logo1.webp';
 import logo1 from '../Assets/logo3.png';
 import {AiOutlineMenu, AiFillCloseSquare} from 'react-icons/ai'
-import { Nosotros } from './Pages/Nosotros';
-import { Home } from './Pages/Home';
-import { Services } from './Pages/Services';
-import { Benefics } from './Pages/Benefics';
-import { Contact } from './Pages/Contact';
+// import { Nosotros } from './Pages/Nosotros';
+import { Home } from '../Pages/Home';
+// import { Services } from './Pages/Services';
+// import { Benefics } from './Pages/Benefics';
+// import { Contact } from './Pages/Contact';
 import { useScrollPosition } from '../Hooks/Scroll';
-import { Header } from './Header';
+// import { Header } from './Header';
 
 
 
@@ -59,7 +59,7 @@ export const NavBar = () => {
               <li className='menuLink'>
                 <NavLink to='/inicio' className={({isActive})=> isActive ? 'active' : ''} onClick={()=>setOpenMenu(!openMenu)}>Inicio</NavLink>
               </li>
-              <li className='menuLink'>
+              {/* <li className='menuLink'>
                 <NavLink to='/servicios' className={({isActive})=> isActive ? 'active' : ''} onClick={()=>setOpenMenu(!openMenu)}>Servicios</NavLink>
               </li>
               <li className='menuLink'>
@@ -69,11 +69,11 @@ export const NavBar = () => {
               <li className='menuLink'>
               <NavLink to='/nosotros' className={({isActive})=> isActive ? 'active' : ''} onClick={()=>setOpenMenu(!openMenu)}>Nosotros</NavLink>
 
-              </li>
-              <li className='menuLink'>
+              </li> */}
+              {/* <li className='menuLink'>
               <NavLink to='/contacto' className={({isActive})=> isActive ? 'active' : ''} onClick={()=>setOpenMenu(!openMenu)}>Contacto</NavLink>
 
-              </li>
+              </li> */}
             </ul>     
        </>
          )
@@ -99,19 +99,19 @@ export const NavBar = () => {
         <div className='menuOpen'>
          <AiFillCloseSquare size={35} onClick={showMenu} className='iconMenu'/> 
           {menuContent}
-        </div>
+      </div>
       
       )}      
     </>
     )} 
-    <Header/>
+    {/* <Header/> */}
      <Routes>
         <Route path='/' element={<Navigate to='/inicio' />} />
         <Route path='/inicio' element={<Home />} />
-        <Route path='/servicios' element={<Services />} />
+        {/* <Route path='/servicios' element={<Services />} />
         <Route path='/beneficios' element={<Benefics />} />
-        <Route path='/nosotros' element={<Nosotros />} />
-        <Route path='/contacto' element={<Contact />} />
+        <Route path='/nosotros' element={<Nosotros />} /> */}
+        {/* <Route path='/contacto' element={<Contact />} /> */}
       </Routes>       
     
     </BrowserRouter>

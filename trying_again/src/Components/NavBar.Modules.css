@@ -5,8 +5,10 @@
     justify-content: space-around;
     align-items: center;
     height: 10rem;
-    background: rgb(144,205,202);
-    background: linear-gradient(132deg, rgba(144,205,202,0.39959733893557425) 0%, rgba(252,255,255,0.8253676470588236) 85%);
+    /* background: rgb(144,205,202);
+    background: linear-gradient(132deg, rgba(144,205,202,0.39959733893557425) 0%, rgba(252,255,255,0.8253676470588236) 85%); 
+    */
+    background-color: #F8F8F0;
     color: #379237;
     
 }
@@ -31,8 +33,8 @@
     flex-direction: column;
     align-items: center;  
     width: 100%;
-    height: 100%;
-    background: linear-gradient(132deg, rgba(76,184,179,1) 0%, rgba(252,255,255,0.08587184873949583) 95%);
+    min-height: 100%;
+    background: linear-gradient(132deg, rgba(76,184,179,1) 0%, rgba(252,255,255,1) 95%);
     position: absolute;      
 }
 .menuLink{

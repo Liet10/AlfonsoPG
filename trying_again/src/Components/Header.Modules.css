@@ -1,15 +1,19 @@
 .header{
-    height: 20rem;
-    background: rgb(144,205,202);
-    background: linear-gradient(132deg, rgba(144,205,202,0.39959733893557425) 0%, rgba(252,255,255,0.8253676470588236) 95%);
-    display: grid;
+    height: 20rem;   
+    background: rgb(0, 0, 0, .2);
+    display: grid; 
+    /* background: rgb(144,205,202);
+    background: linear-gradient(132deg, rgba(144,205,202,0.39959733893557425) 0%, rgba(252,255,255,0.0253676470588236) 85%); */
     place-items: center;
+    color: #fbfbfb;
     
    
 }
 .headerBackground{
     height: 20rem;
-    background-image: url('../Assets/img_home/piscina.jpg');    
+    background-image: url('/public/imgHeader.webp');
+    background-repeat: no-repeat;
+    /* background-size:cover; */
 }
 .titleSection{
     text-align: center;

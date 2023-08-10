@@ -1,13 +1,31 @@
 .footer{
+    margin-top: auto;
     text-align: center;
     padding: 1rem;
     background: rgb(144,205,202);
     background: linear-gradient(132deg, rgba(144,205,202,0.39959733893557425) 0%, rgba(252,255,255,0.8253676470588236) 85%);
     color: #0b4f6c;
 }
-.contactFooter{
-    margin: 0;
-}
 .textCopy{
     font-size: 1.5rem;
 }
+@media(min-width: 768px){
+    .footerInfo{
+        display: grid;
+        grid-template-columns: 1fr minmax(0, 10rem);
+        
+    }
+    .socialIcons{
+        grid-area: 1 / 2 / 1 / 3;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .contactFooter{
+        margin-left: 10rem;
+    }
+}
+.socialIcon:hover{
+    cursor: pointer;
+}
+

@@ -1,12 +1,11 @@
+// import { Router } from 'react-router-dom';
 import './App.css';
-import { Footer } from './Components/Footer';
 import { NavBar } from './Components/NavBar';
 
 function App() {
   return (
     <div className="container">
-      <NavBar/>
-      <Footer/>       
+      <NavBar/>    
     </div>
   );
 }
