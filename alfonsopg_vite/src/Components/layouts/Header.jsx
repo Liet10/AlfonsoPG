@@ -1,17 +1,19 @@
 import React, { useState } from 'react'
 import { NavBar } from '../Pages/NavBar'
-import logo from '../../assets/Logo/logo1.webp';
+import logo from '../../assets/Logo/logo1.png';
+import logoW from '../../assets/Logo/logo1.webp'
 import logo1 from '../../assets/Logo/logo3.png'
+import logo1W from '../../assets/Logo/logo3.webp'
 
 
 export const Header = () => {
-  const [logoColor, setLogoColor] = useState(logo)
+  const [logoColor, setLogoColor] = useState(logoW)
 
    const changeBlueColor = ()=>{
-      setLogoColor(logo1)
+      setLogoColor(logo1W)
    }
    const changeGreenColor = ()=>{
-    setLogoColor(logo)
+    setLogoColor(logoW)
  }
   return (
     <header>
