@@ -1,23 +1,24 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { garden } from '../../ServicesPagejson/servicesData';
-import { pools } from '../../ServicesPagejson/servicesData';
+import { pools, comunities, deliveries } from '../../ServicesPagejson/servicesData';
 
 
 export const Service = () => {
   const [service, setService] = useState({})
   const { id } = useParams();
   useEffect(() => {
-    const selectedServiceGarden = garden.find(item => item.id === id)
-    const selectedServicePool = pools.find(item => item.id === id)
-
-
-    if (selectedServiceGarden) {
-      setService(selectedServiceGarden);
-    } else if (selectedServicePool) {
-      setService(selectedServicePool);
+    const selectedService =
+      garden.find(item => item.id === id) ||
+      pools.find(item => item.id === id) ||
+      comunities.find(item => item.id === id) ||
+      deliveries.find(item => item.id === id);
+  
+    if (selectedService) {
+      setService(selectedService);
+      window.scrollTo(0, 0);
     } 
-  }, [id])
+  }, [id]);
 
   return (
     <div className='articleSection'>

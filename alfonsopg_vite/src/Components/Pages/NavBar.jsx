@@ -1,27 +1,23 @@
 import React, { useEffect, useState } from 'react';
 import logo from '../../assets/Logo/logo5.png'
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import { RxDropdownMenu } from 'react-icons/rx';
 import { AiOutlineCloseCircle } from 'react-icons/ai';
 import { BsFillPhoneVibrateFill } from 'react-icons/bs';
 import { useScrollPosition } from '../../../Hooks/NavBarScroll';
+import { IsDesktop } from '../../../Hooks/IsDesktop';
+import { Search } from './Search';
 
 
 export const NavBar = () => {
-    const [isDesktop, setIsDesktop] = useState(false);
     const [openMenu, setOpenMenu ] = useState(false);
 
-    useEffect(() => {
-        const handleResize = () => {
-            setIsDesktop(window.innerWidth >= 768);
-        };
+    const isDesktop = IsDesktop()
+    const location = useLocation()
 
-        window.addEventListener('resize', handleResize);
-        handleResize();
-
-        return () => window.removeEventListener('resize', handleResize);
-    }, []);
-
+    useEffect(()=>{
+        window.scrollTo(0, 0);
+    }, [location])
     const showOrHideMenu = ()=>{
           setOpenMenu(!openMenu)
     }
@@ -39,16 +35,17 @@ export const NavBar = () => {
                         <li className="navBarLink"><NavLink to='/servicios'>Servicios</NavLink></li>
                         <li className="navBarLink"><NavLink to='/acerca'>Nosotros</NavLink></li>
                         <li className="navBarLink"><NavLink to='/contact'>Contacto</NavLink></li>
-
                     </ul>
                 </div>
+                <Search/>
                 </nav>
             
             ):
             ( 
                <>
                   {!openMenu ? (
-                       <nav className={scrollPosition > 0 ? 'navBarOnScroll' : 'navBar'}>
+                    <>
+                     <nav className={scrollPosition > 0 ? 'navBarOnScroll' : 'navBar'}>
                        <div className="logoNavBar">
                            <img src={logo} alt="logo_navBar" width="120" height="120" />
                        </div> 
@@ -56,7 +53,10 @@ export const NavBar = () => {
                        <div className='imgMenu'>
                            <RxDropdownMenu className='menuButton' size={45} color='green' onClick={showOrHideMenu}/>
                        </div>
-                       </nav>               
+                       </nav>
+                        <Search/>   
+                    </>
+                                  
                   ): 
                   (  
                     <div className='openMenu'>

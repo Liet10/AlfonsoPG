@@ -3,11 +3,11 @@ import ImageWithFallback from './ImageWithFallBack';
 import { Link } from 'react-router-dom';
 
 
-export const GettingService = ({title, service}) => {
+export const GettingService = ({title, service, nameClass}) => {
   return (
     <div>
          <h2 className="align-center articleTitle">{title}</h2>
-            <article  className="servicesHome">
+            <article  className={nameClass}>
             {service.map(item => {
                 return (                        
                     <div key={item.id} className="imageContainer">

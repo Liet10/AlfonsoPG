@@ -1,12 +1,19 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import emailjs from '@emailjs/browser';
+import { Search } from '../Pages/Search';
+import { IsDesktop } from '../../../Hooks/IsDesktop';
+import { GettingService } from '../Helpers/GettingService';
+import { deliveries } from '../../ServicesPagejson/servicesData';
+import { useLocation } from 'react-router-dom';
 
 export const Aside = () => {
+    const [deliveryData, setDeliveryData] = useState([]);
     const form = useRef()
+    const location = useLocation()
     useEffect(()=>{
-        console.log(form)
+        setDeliveryData(deliveries)
     }, [])
-
+     const isDesktop = IsDesktop()
     const sendEmail = (e) => {
         e.preventDefault();
     
@@ -18,15 +25,12 @@ export const Aside = () => {
           });
           e.target.reset()
       };
+      const isServicePage = location.pathname === '/servicios'
   return (
     <aside className="sideBar">
-            <section className="search">
-                <h3 className="title">Buscador</h3>
-                <form>
-                    <input type="text" id="search_field" />
-                    <input className="hoverable" type="submit" value="Buscar"/>
-                </form>
-            </section>
+         <article className='articleDelivery'>
+            {isServicePage && <GettingService title= 'A Domicilio' service={deliveryData} nameClass= 'servicesHome1'/>}          
+         </article>
             <section className="offer">
                 <h3 className="title">Oferta actual</h3>
                 <p className="offerText">Te ponemos el cloro, ph o sal para tu piscinaen la puerta de tu casa 10% de descuento si lo solicitas  online</p>
